@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSDL1ModelStoreContainer" CdmEntityContainer="CSDL1Entities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CSDL1Model.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="CSDL1Model.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="pType" ColumnName="pType" />
+          <ScalarProperty Name="pPrice" ColumnName="pPrice" />
+          <ScalarProperty Name="categoryId_" ColumnName="categoryId " />
+          <ScalarProperty Name="imgProduct" ColumnName="imgProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

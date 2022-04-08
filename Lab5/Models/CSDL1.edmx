@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CSDL1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="categoryName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="pName" Type="nvarchar" MaxLength="150" />
+          <Property Name="pType" Type="nvarchar" MaxLength="150" />
+          <Property Name="pPrice" Type="float" />
+          <Property Name="categoryId " Type="int" />
+          <Property Name="imgProduct" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="fk_idCategory">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryId " />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSDL1ModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_idCategory" Association="Self.fk_idCategory">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSDL1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="categoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_idCategory" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="pName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="pType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="pPrice" Type="Double" />
+          <Property Name="categoryId_" Type="Int32" />
+          <Property Name="imgProduct" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.fk_idCategory" FromRole="Product" ToRole="Category" />
+        </EntityType>
+        <Association Name="fk_idCategory">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryId_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSDL1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <AssociationSet Name="fk_idCategory" Association="Self.fk_idCategory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSDL1ModelStoreContainer" CdmEntityContainer="CSDL1Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CSDL1Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CSDL1Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="pType" ColumnName="pType" />
+                <ScalarProperty Name="pPrice" ColumnName="pPrice" />
+                <ScalarProperty Name="categoryId_" ColumnName="categoryId " />
+                <ScalarProperty Name="imgProduct" ColumnName="imgProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
