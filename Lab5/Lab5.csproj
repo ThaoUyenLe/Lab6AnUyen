@@ -172,6 +172,7 @@
       <LastGenOutput>CSDL1.Context.cs</LastGenOutput>
       <DependentUpon>CSDL1.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\CSDL1.edmx.sql" />
     <Content Include="Models\CSDL1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CSDL1.edmx</DependentUpon>

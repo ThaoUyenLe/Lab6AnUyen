@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\CNPMNC\Lab5\Lab5\Models\CSDL1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\s1924\OneDrive\Desktop\Working\2_thin\CNPMNC\Lab5\Lab5\Models\CSDL1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
